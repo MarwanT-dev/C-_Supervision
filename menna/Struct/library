@@ -1,0 +1,43 @@
+// In struct Book: remove isborrowed & borrowedBy
+// Reason: A book can have multiple copies. Use (total_quantity - total_borrowed) instead.
+
+struct Book {
+    string name;
+    int id;
+    int total_quantity;
+    int total_borrowed = 0; // track how many are borrowed
+};
+
+// In add_book():
+cin >> books[bookCount].id >> books[bookCount].name >> books[bookCount].total_quantity;
+books[bookCount].total_borrowed = 0; // reset borrowed count
+
+// In user_borrow_book():
+if (bookname == books[i].name) {
+    if (books[i].total_quantity - books[i].total_borrowed == 0) {
+        cout << "No available copies\n";  // clearer error
+        return;
+    }
+    // find user
+    for (int j = 0; j < userCount; j++) {
+        if (username == users[j].name) {
+            books[i].total_borrowed++;   // instead of quantity--
+            users[j].borrowedBook[users[j].borrowedCount++] = bookname;
+            return;
+        }
+    }
+    cout << "Invalid user name\n";
+    return;
+}
+
+// In user_return_book():
+// Fix shifting bug
+for (int b = 0; b < users[j].borrowedCount; b++) {
+    if (bookname == users[j].borrowedBook[b]) {
+        for (int a = b; a < users[j].borrowedCount - 1; a++)
+            users[j].borrowedBook[a] = users[j].borrowedBook[a+1];
+        users[j].borrowedCount--;   // move this OUTSIDE the loop
+        books[i].total_borrowed--;  // decrease borrowed count
+        return;
+    }
+}
