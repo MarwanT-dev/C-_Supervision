@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void setPower(int arr[], int len, int m = 2) // ✅ removed default len, user provides it
+{
+    for (int i = 0; i < len; i++)
+    {
+        arr[i] = pow(m, i); // ✅ compute m^i
+    }
+
+    for (int i = 0; i < len; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << "\n";
+}
+
+int main()
+{
+    cout << "Enter base: ";
+    int m;
+    cin >> m;
+
+    cout << "Enter length (max 50): ";
+    int len;
+    cin >> len;
+
+    if (len > 50 || len <= 0) // ✅ fix: input validation
+    {
+        cout << "Invalid length!";
+        return 0;
+    }
+
+    int arr[50]; // ✅ fixed-size array
+    setPower(arr, len, m);
+
+    return 0;
+}
