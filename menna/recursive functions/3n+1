@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std ;
+
+#No need for global var
+
+int length_3n_plus_1(int n) {
+	if (n == 1){
+	    cout<<endl<<"Length "; #just for the shape of final output
+	    return 1;
+	}
+    cout<<n<<' ';#printing the sequence 
+
+  #Next lines are instead of the global var idea
+	if (n % 2 == 0)
+		return 1 + length_3n_plus_1(n / 2); 
+
+	return 1 + length_3n_plus_1(3 * n + 1);
+}
+
+int main()
+{
+    int x ; cin>>x;
+    
+   cout<<length_3n_plus_1(x) ;
+    return 0 ;
+}
