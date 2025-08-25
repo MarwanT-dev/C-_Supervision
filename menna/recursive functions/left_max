@@ -1,2 +1,11 @@
+# your sol is perfect , but look at this also 
+void left_max(int arr[], int len) {
+	if (len == 1)
+		return;
+
+	left_max(arr, len - 1);
+	arr[len-1] = max(arr[len-1], arr[len-2]);
+}
+
 int len ; cin>>len ;
 int arr[len] ; # Variable length array (VLA) problem instead write ==> vector<int> arr(len)
