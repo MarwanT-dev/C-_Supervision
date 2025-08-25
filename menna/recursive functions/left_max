@@ -1,0 +1,2 @@
+int len ; cin>>len ;
+int arr[len] ; # Variable length array (VLA) problem instead write ==> vector<int> arr(len)
