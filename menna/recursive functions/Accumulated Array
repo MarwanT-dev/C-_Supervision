@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std ;
 
-#see this code 
+#the same code but he traversed the array from the beginning  
 
 void accumulate_arr(int arr[], int len) {
 	if (len == 1)
