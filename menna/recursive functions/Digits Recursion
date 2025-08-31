@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+void do_something(int n) {
+    if (n) {
+        do_something(n / 10);     // FIX: moved recursion before printing to keep digits in correct order
+        cout << n % 10;
+    }
+}
+
+int main() {
+    do_something(123456);
+    return 0;
+}
