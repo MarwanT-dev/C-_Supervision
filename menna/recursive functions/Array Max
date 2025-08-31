@@ -6,6 +6,7 @@ int arrMax(int arr[], int len)
         return arr[0] ;
     return max(arrMax(arr, len-1) , arr[len-1]);   // FIX: use arr[len-1] instead of arr[len] (out of bounds)
 }
+
 int main()
 {
     int len ; cin>>len ;
